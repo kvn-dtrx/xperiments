@@ -1,0 +1,31 @@
+name: Validate IPython Notebooks
+
+on:
+  pull_request:
+    paths:
+      - "**/*.ipynb"
+
+jobs:
+  check-ipynb:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install jq
+      run: sudo apt-get update && sudo apt-get install -y jq
+
+    - name: Validate Notebooks
+      run: |
+        failed=false
+        for notebook in $(find . -name "*.ipynb"); do
+          if jq '.cells | length > 0' "$notebook" > /dev/null 2>&1; then
+            echo "Notebook $notebook contains populated cells and cannot be committed."
+            failed=true
+          fi
+        done
+
+        if [ "$failed" = true ]; then
+          exit 1
+        fi
