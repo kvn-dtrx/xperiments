@@ -28,5 +28,8 @@ jobs:
 
         if [ "${failed}" -gt 0 ]; then
           exit 1
+        else
+          echo "No uncleared output cells found."
+          exit 0
         fi
 
