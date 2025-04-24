@@ -18,14 +18,14 @@ jobs:
 
     - name: Validate Notebooks
       run: |
-        failed=false
-        for notebook in $(find . -name "*.ipynb"); do
-          if jq '.cells | length > 0' "$notebook" > /dev/null 2>&1; then
-            echo "Notebook $notebook contains populated cells and cannot be committed."
-            failed=true
+        failed=0
+        find . -name "*.ipynb" -print0 | while IFS='' read -r -d '' notebook; do
+          if jq '.cells[] | select(.outputs | length > 0)' "$notebook" > /dev/null 2>&1; then
+            echo "Notebook ${notebook} contains populated cells and should not be committed."
+            failed=1
           fi
         done
 
-        if [ "$failed" = true ]; then
+        if [ "${failed}" -gt 0 ]; then
           exit 1
         fi
