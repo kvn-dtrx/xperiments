@@ -7,6 +7,8 @@ while IFS='' read -r -d '' notebook; do
   fi
 done < <(find . -name "*.ipynb" -print0)
 
+
+
 if [ "${failed}" -gt 0 ]; then
   exit 1
 else
