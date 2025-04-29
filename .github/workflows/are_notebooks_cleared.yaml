@@ -1,0 +1,10 @@
+name: Are Notebooks Cleared
+
+on:
+  pull_request:
+    paths:
+      - "*.*"
+
+jobs:
+  are-notebooks-cleared:
+    uses: kvn-dtrx/git-hub-automatisation/.github/workflows/are_notebooks_cleared.yaml@main

@@ -3,7 +3,7 @@ name: Check Branch Name
 on:
   pull_request:
     paths:
-      - "**/*.ipynb"
+      - "*.*"
 
 jobs:
   check-branch-name:
