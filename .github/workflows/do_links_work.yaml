@@ -1,0 +1,8 @@
+name: Do Links Work
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-branch-name:
+    uses: kvn-dtrx/git-hub-automatisation/.github/workflows/check_branch_name.yaml@main
