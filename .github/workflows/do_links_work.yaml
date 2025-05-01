@@ -5,4 +5,4 @@ on:
 
 jobs:
   check-branch-name:
-    uses: kvn-dtrx/git-hub-automatisation/.github/workflows/check_branch_name.yaml@main
+    uses: kvn-dtrx/git-hub-automatisation/.github/workflows/do_links_work.yaml@main
