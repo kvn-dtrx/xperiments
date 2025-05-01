@@ -4,5 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check-branch-name:
+  do-links-work:
+    permissions:
+      issues: write
     uses: kvn-dtrx/git-hub-automatisation/.github/workflows/do_links_work.yaml@main
