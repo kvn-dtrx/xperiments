@@ -9,6 +9,6 @@ on:
 
 jobs:
   mirror-private-to-public:
-    # permissions:
-    #   issues: write
+    permissions:
+      contents: write
     uses: kvn-dtrx/git-hub-automatisation/.github/workflows/mirror_private_to_public.yaml@main
