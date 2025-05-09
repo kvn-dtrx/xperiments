@@ -1,0 +1,10 @@
+name: Check make
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check-make:
+    # permissions:
+    #   contents: write
+    uses: kvn-dtrx/git-hub-automatisation/.github/workflows/check_make.yaml@main
