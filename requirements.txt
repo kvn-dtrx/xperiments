@@ -1,0 +1,2 @@
+# Python API for Federal Reserve Economic Data (FRED) from St. Louis Fed
+fredapi==0.5.2
