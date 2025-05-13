@@ -1,0 +1,27 @@
+name: Are iPy Notebooks Cleared
+
+# description: Fail if any iPy Notebook contains uncleared output cells.
+
+on:
+  # This workflow only runs on pull requests that modify iPy Notebooks.
+  pull_request:
+    paths:
+      - "**/*.ipynb"
+
+jobs:
+  validate-notebooks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Validate iPy Notebooks
+        run: |
+          export BASE_REF="${{ github.event.pull_request.base.ref }}"
+          ./scripts/check_notebooks.sh
+
+
