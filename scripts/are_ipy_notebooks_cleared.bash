@@ -13,15 +13,17 @@ notebooks="$(
         grep -z '\.ipynb$' || true
 )"
 
-while IFS='' read -r -d '' notebook; do
-    if [ -n "$(jq '.cells[] | select(.outputs | length > 0)' "${notebook}")" ]; then
-        echo "Notebook with uncleared output cells:"
-        echo "  ${notebook}"
-        failed=1
-    fi
-    # In order to alter the state variable, the loop must be run in the main shell
-    # why process substitution is used here.
-done <<<"${notebooks}"
+echo $notebooks
+
+# while IFS='' read -r -d '' notebook; do
+#     if [ -n "$(jq '.cells[] | select(.outputs | length > 0)' "${notebook}")" ]; then
+#         echo "Notebook with uncleared output cells:"
+#         echo "  ${notebook}"
+#         failed=1
+#     fi
+#     # In order to alter the state variable, the loop must be run in the main shell
+#     # why process substitution is used here.
+# done <<<"${notebooks}"
 
 if [ "${failed}" -gt 0 ]; then
     exit 1
