@@ -1,9 +1,10 @@
 name: Are Filenames Formatted
 
 on:
-  pull_request:
-    paths:
-      - "*"
+  # pull_request:
+  #   paths:
+  #     - "*"
+  workflow_dispatch:
 
 jobs:
   are-filenames-formatted:

@@ -7,7 +7,7 @@ on:
       - "**/*.ipynb"
 
 jobs:
-  validate-notebooks:
+  are-ipy-notebooks-cleared:
     runs-on: ubuntu-latest
 
     steps:
