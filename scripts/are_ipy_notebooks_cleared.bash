@@ -13,7 +13,7 @@ notebooks="$(
         grep -z '\.ipynb$' || true
 )"
 
-echo $notebooks
+echo _${notebooks}_
 
 # while IFS='' read -r -d '' notebook; do
 #     if [ -n "$(jq '.cells[] | select(.outputs | length > 0)' "${notebook}")" ]; then
