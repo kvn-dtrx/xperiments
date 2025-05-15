@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - "**/*.ipynb"
-  workflow_dispatch:
+  # workflow_dispatch:
 
 jobs:
   are-notebooks-cleared:
